@@ -47,11 +47,11 @@ const HeroSection = () => {
 
           {/* RIGHT IMAGE */}
           <div className="relative">
-            <div className="overflow-hidden rounded-2xl shadow-xl">
+            <div className="overflow-hidden rounded-2xl shadow-2xl">
               <img
                 src="/Home/Herosection.jpg"
                 alt="Students studying"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover shadow-lg"
               />
             </div>
 

@@ -15,7 +15,7 @@ const CourseHero = () => {
           {/* Left */}
           <div className="max-w-3xl">
             <h1 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-              Find the Right Undergraduate Program
+              Find the Right Undergraduate Course
             </h1>
 
             <p className="mt-4 text-lg text-slate-900/60">

@@ -37,7 +37,7 @@ const AcademicResources = () => {
             </p>
 
             <a
-              href="#"
+              href="/course"
               className="mt-auto inline-flex items-center pt-6 font-semibold text-[#0d2176]"
             >
               Browse Directory →
