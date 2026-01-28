@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -13,10 +14,10 @@ const Header = () => {
 
         {/* Center Links */}
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-          <li className="hover:text-blue-600 cursor-pointer">HOME</li>
-          <li className="hover:text-blue-600 cursor-pointer">COURSES</li>
-          <li className="hover:text-blue-600 cursor-pointer">SCHOLARSHIPS</li>
-          <li className="hover:text-blue-600 cursor-pointer">EXAMS</li>
+          <Link to="/" className="hover:text-blue-600 cursor-pointer">HOME</Link >
+          <Link to="/course" className="hover:text-blue-600 cursor-pointer">COURSES</Link >
+          <Link to="/" className="hover:text-blue-600 cursor-pointer">SCHOLARSHIPS</Link >
+          <Link to="/" className="hover:text-blue-600 cursor-pointer">EXAMS</Link >
         </ul>
 
         {/* Auth Buttons */}
