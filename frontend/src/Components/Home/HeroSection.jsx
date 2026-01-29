@@ -1,5 +1,6 @@
 import { VscVerifiedFilled } from "react-icons/vsc";
 import { FaGraduationCap } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -26,13 +27,17 @@ const HeroSection = () => {
 
             {/* CTA BUTTONS */}
             <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/course">
               <button className="inline-flex items-center justify-center rounded-lg bg-[#0d2176] px-6 py-3 text-sm font-semibold text-white transition-all duration-500 hover:bg-black">
                 Explore Courses →
               </button>
+              </Link>
 
+              <Link to="/scholarship">
               <button className="inline-flex items-center justify-center rounded-lg border border-academic-navy px-6 py-3 text-sm font-semibold text-academic-navy transition-all hover:bg-academic-navy hover:bg-black hover:text-white duration-500 ">
                 Find Scholarships
               </button>
+              </Link>
             </div>
 
             {/* TRUST BADGES */}

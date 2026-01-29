@@ -41,9 +41,9 @@ const Footer = () => {
             </h4>
             <ul className="mt-4 space-y-3 text-gray-50 font-thin flex flex-col">
               <Link to="/course" onClick={scrollTotop}>Courses</Link>
-              <Link to="">Scholarships</Link>
-              <Link to="">Exams</Link>
-              <Link to="">Insights</Link>
+              <Link to="/scholarship" onClick={scrollTotop}>Scholarships</Link>
+              <Link to="" onClick={scrollTotop}>Exams</Link>
+              
             </ul>
           </div>
 
@@ -52,11 +52,11 @@ const Footer = () => {
             <h4 className="text-sm font-bold tracking-widest text-white">
               ORGANIZATION
             </h4>
-            <ul className="mt-4 space-y-3 text-gray-50 font-thin">
-              <li>About Us</li>
-              <li>Careers</li>
-              <li>Privacy Policy</li>
-              <li>Terms of Service</li>
+            <ul className="mt-4 space-y-3 text-gray-50 font-thin flex flex-col">
+              <Link to="/aboutus" onClick={scrollTotop}>About Us</Link>
+              <Link>Careers</Link>
+              <Link>Privacy Policy</Link>
+              <Link>Terms of Service</Link>
             </ul>
           </div>
 
