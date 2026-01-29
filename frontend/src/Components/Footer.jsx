@@ -6,8 +6,13 @@ import {
   Globe,
   Share2,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const scrollTotop = ()=>{
+    window.scrollTo({top:0, left:0, behavior:"smooth"});
+
+  }
   return (
     
     <footer className="bg-[#030c32]  border-academic-navy">
@@ -34,11 +39,11 @@ const Footer = () => {
             <h4 className="text-sm font-bold tracking-widest text-white">
               PLATFORM
             </h4>
-            <ul className="mt-4 space-y-3 text-gray-50 font-thin">
-              <li>Courses</li>
-              <li>Scholarships</li>
-              <li>Exams</li>
-              <li>Insights</li>
+            <ul className="mt-4 space-y-3 text-gray-50 font-thin flex flex-col">
+              <Link to="/course" onClick={scrollTotop}>Courses</Link>
+              <Link to="">Scholarships</Link>
+              <Link to="">Exams</Link>
+              <Link to="">Insights</Link>
             </ul>
           </div>
 
