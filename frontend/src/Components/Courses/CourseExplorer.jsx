@@ -128,15 +128,16 @@ const CourseExplorer = () => {
                 key={course.id}
                 className="bg-white rounded-xl border border-slate-900/10 p-5 hover:shadow-lg transition"
               >
-                <span className="inline-block mb-3 rounded-md bg-slate-50 px-3 py-1 text-xs font-semibold text-academic-navy">
+                <img src="" alt="" className="bg-black h-45 border w-full" />
+                <span className="inline-block mb-3 mt-2 text-xs font-bold text-[#0d2176]">
                   {course.category}
                 </span>
 
-                <h4 className="font-bold text-slate-900">
+                <h4 className="font-bold text-[20px] text-slate-900">
                   {course.title}
                 </h4>
 
-                <p className="mt-2 text-sm text-slate-900/60">
+                <p className="mt-2 text-[13px] text-slate-900/60">
                   {course.description}
                 </p>
 
