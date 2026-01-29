@@ -26,13 +26,13 @@ const Header = () => {
           <Link to="/course" className="hover:text-blue-600 cursor-pointer">
             COURSES
           </Link>
-          <Link to="/" className="hover:text-blue-600 cursor-pointer">
+          <Link to="/scholarship" className="hover:text-blue-600 cursor-pointer">
             SCHOLARSHIPS
           </Link>
           <Link to="/" className="hover:text-blue-600 cursor-pointer">
             EXAMS
           </Link>
-          <Link to="" className="hover:text-blue-600 cursor-pointer">
+          <Link to="/aboutus" className="hover:text-blue-600 cursor-pointer">
             ABOUT US
           </Link>
         </ul>
