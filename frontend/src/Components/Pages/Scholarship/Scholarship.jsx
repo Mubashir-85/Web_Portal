@@ -5,6 +5,7 @@ function Scholarship() {
   return (
     <>
     <HeroScholarship/>
+    
     </>
   )
 }
