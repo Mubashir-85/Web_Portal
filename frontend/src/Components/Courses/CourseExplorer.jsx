@@ -3,12 +3,17 @@ import { IoFilterCircle } from "react-icons/io5";
 import getCourses from "../Services/courses";
 
 /* ---------- FILTER CATEGORIES ---------- */
-const COURSE_CATEGORIES = [
-  "IT & Computer Courses",
-  "Career-Oriented Courses",
-  "Soft Skills",
-  "General Awareness",
-];
+// Object for image lookup
+const CATEGORY_IMAGES = {
+  "IT & Computer Courses": "/Courses/IT-Image.jpg",
+  "Career-Oriented Courses": "/Courses/Job-oriented.jpg",
+  "Soft Skills": "/Courses/Soft-Skills.jpg",
+  "General Awareness": "/Courses/General-Awarness.jpg",
+};
+
+// Convert object keys into array for mapping
+const COURSE_CATEGORIES = Object.keys(CATEGORY_IMAGES);
+
 
 const CourseExplorer = () => {
   const [search, setSearch] = useState("");
@@ -126,7 +131,12 @@ const CourseExplorer = () => {
                 key={course.id}
                 className="bg-white rounded-xl border border-slate-900/10 p-5 hover:shadow-lg transition"
               >
-                <img src="" alt="" className="bg-black h-45 border w-full" />
+                <img
+                  src={CATEGORY_IMAGES[course.category]}
+                  alt={course.title}
+                  className="w-full h-40 object-cover rounded-lg"
+                />
+
                 <span className="inline-block mb-3 mt-2 text-xs font-bold text-[#0d2176]">
                   {course.category}
                 </span>

@@ -19,6 +19,10 @@ const courseSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    image: {
+      type: String,
+      required: true,
+    },
     videoUrl: {
       type: String,
     },
@@ -26,7 +30,7 @@ const courseSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model("Course", courseSchema);
