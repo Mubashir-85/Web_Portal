@@ -1,7 +1,7 @@
 const scholarships = [
   {
     id: 1,
-    name: "National Scholarship Portal (NSP)",
+    name: "National Scholarship Portal",
     provider: "Government of India",
     eligibility: "School to PG students",
     benefits: "Fee support & stipend",
