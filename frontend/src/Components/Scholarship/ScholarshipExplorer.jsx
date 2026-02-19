@@ -175,7 +175,7 @@ const ScholarshipExplorer = () => {
               </div>
 
               {/* MINIMUM GRANT */}
-              <div>
+              {/* <div>
                 <div className="flex justify-between items-center mb-3">
                   <p className="text-xs font-semibold tracking-wider text-[#8A94A6]">
                     MINIMUM GRANT
@@ -199,10 +199,10 @@ const ScholarshipExplorer = () => {
                   <span>₹0</span>
                   <span>₹2,00,000+</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* APPLICATION STATUS */}
-              <div>
+              {/* <div>
                 <p className="text-xs font-semibold tracking-wider text-[#8A94A6] mb-4">
                   APPLICATION STATUS
                 </p>
@@ -230,7 +230,7 @@ const ScholarshipExplorer = () => {
                     Closing Soon
                   </label>
                 </div>
-              </div>
+              </div> */}
 
               {/* APPLY BUTTON */}
               <button

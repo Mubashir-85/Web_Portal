@@ -5,6 +5,7 @@ import Hero from '../Pages/Home/Hero';
 import Course from '../Pages/Course/Course';
 import Scholarship from '../Pages/Scholarship/Scholarship';
 import AboutUs from '../Pages/AboutUs/AboutUs';
+import Exams from '../Pages/Exams/Exams';
 
 function Router() {
   return (
@@ -14,6 +15,7 @@ function Router() {
          <Route path='/' element={<Hero/>}/>
          <Route path='course' element={<Course/>}/>
          <Route path='scholarship' element={<Scholarship/>}/>
+         <Route path='exams' element={<Exams/>}/>
          <Route path='aboutus' element={<AboutUs/>}/>
 
          
