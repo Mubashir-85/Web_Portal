@@ -61,7 +61,7 @@ const AcademicResources = () => {
             </p>
 
             <a
-              href="#"
+              href="/scholarship"
               className="mt-auto inline-flex items-center pt-6 font-semibold text-green-900"
             >
               Find Scholarships →
