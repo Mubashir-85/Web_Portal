@@ -117,8 +117,8 @@ const Footer = () => {
   ];
 
   const organizationLinks = [
-    { name: 'About Us', href: '#', description: 'Learn our story' },
-    { name: 'Careers', href: '#', description: 'Join our team' },
+    { name: 'About Us', href: '/aboutus', description: 'Learn our story' },
+    { name: 'Contact Us', href: '/contactus', description: 'Get in touch' },
     { name: 'Privacy Policy', href: '#', description: 'Read our privacy terms' },
     { name: 'Terms of Service', href: '#', description: 'View usage terms' },
   ];

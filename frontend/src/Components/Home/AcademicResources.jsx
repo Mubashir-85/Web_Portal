@@ -84,7 +84,7 @@ const AcademicResources = () => {
             </p>
 
             <a
-              href="#"
+              href="/exams"
               className="mt-auto inline-flex items-center pt-6 font-semibold text-orange-800"
             >
               Prepare Now →
