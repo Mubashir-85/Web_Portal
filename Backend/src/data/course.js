@@ -455,5 +455,5 @@ function shuffleArray(array) {
 }
 
 
-// ✅ Export Shuffled Courses
+// Export Shuffled Courses
 module.exports = shuffleArray(courses);

@@ -39,12 +39,16 @@ const Header = () => {
 
         {/* Auth Buttons */}
         <div className="flex items-center gap-4">
-          <button className="text-sm font-medium text-gray-700 hover:text-blue-600">
-            Login
-          </button>
-          <button className="rounded-md bg-[#0d2176] px-4 py-2 text-sm font-medium text-white hover:bg-black">
-            Sign Up
-          </button>
+          <Link to="/login">
+            <button className="text-sm font-medium text-gray-700 hover:text-blue-600">
+              Login
+            </button>
+          </Link>
+          <Link to="/signup">
+            <button className="rounded-md bg-[#0d2176] px-4 py-2 text-sm font-medium text-white hover:bg-black">
+              Sign Up
+            </button>
+          </Link>
         </div>
       </div>
     </nav>

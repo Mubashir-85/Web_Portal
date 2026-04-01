@@ -6,6 +6,8 @@ import Course from '../Pages/Course/Course';
 import Scholarship from '../Pages/Scholarship/Scholarship';
 import AboutUs from '../Pages/AboutUs/AboutUs';
 import Exams from '../Pages/Exams/Exams';
+import ContactUs from '../Pages/ContactUs/ContactUs';
+import Login from '../Pages/Login/Login';
 
 function Router() {
   return (
@@ -17,9 +19,11 @@ function Router() {
          <Route path='scholarship' element={<Scholarship/>}/>
          <Route path='exams' element={<Exams/>}/>
          <Route path='aboutus' element={<AboutUs/>}/>
-
-         
+         <Route path='contactus' element={<ContactUs/>}/>
         </Route>
+        
+        {/* Login route without Layout */}
+        <Route path='login' element={<Login/>}/>
 
     </Routes>
   
