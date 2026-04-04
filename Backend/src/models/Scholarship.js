@@ -22,6 +22,14 @@ const scholarshipSchema = new mongoose.Schema(
     applyLink: {
       type: String,
     },
+    deadline: {
+      type: Date,
+    },
+    status: {
+      type: String,
+      enum: ['open', 'upcoming', 'closed'],
+      default: 'open',
+    },
   },
   { timestamps: true }
 );

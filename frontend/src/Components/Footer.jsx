@@ -256,13 +256,13 @@ const Footer = () => {
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Phone</p>
                     <p className="text-sm text-slate-300 group-hover:text-white transition-colors">
-                      +1 (555) 123-4567
+                      +91 8625006174
                     </p>
                   </div>
                 </a>
               </li>
 
-              <li className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/30 border border-slate-800">
+              {/* <li className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/30 border border-slate-800">
                 <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
                   <MapPin className="w-4 h-4" />
                 </div>
@@ -272,7 +272,7 @@ const Footer = () => {
                     San Francisco, CA
                   </p>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

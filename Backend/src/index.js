@@ -7,6 +7,8 @@ const connectDB = require("./config/db");
 const scholarshipRoutes = require("./routes/scholarshiproute");
 const examRoutes = require("./routes/examsroutes");
 const courseRoutes = require("./routes/courseroute");
+const authRoutes = require("./routes/authroutes");
+const deadlinesRoutes = require("./routes/deadlinesroute");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,6 +28,8 @@ app.get("/", (req, res) => {
 app.use("/api/scholarshiproute", scholarshipRoutes);
 app.use("/api/examsroutes", examRoutes);
 app.use("/api/courseroute", courseRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/deadlines", deadlinesRoutes);
 
 /* ---------- SERVER ---------- */
 app.listen(PORT, () => {

@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import { Mail, Lock, Eye, EyeOff, GraduationCap } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, GraduationCap, User, Phone } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../Services/auth";
+import { signUp } from "../Services/auth";
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
+    fullName: "",
     email: "",
+    phone: "",
     password: "",
-    rememberMe: false
+    confirmPassword: "",
+    agreeToTerms: false
   });
 
   const handleChange = (e) => {
@@ -26,21 +30,40 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    
+    // Validation
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+    
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+    
+    if (!formData.agreeToTerms) {
+      setError("Please agree to the Terms and Conditions");
+      return;
+    }
+    
     setLoading(true);
     
     try {
-      // Call login API
-      const response = await login({
+      // Call signup API
+      const response = await signUp({
+        fullName: formData.fullName,
         email: formData.email,
+        phone: formData.phone,
         password: formData.password,
       });
       
       if (response.success) {
-        alert("Login successful!");
-        window.location.href = "/home"; // Force reload to update header
+        alert("Account created successfully! You can now login.");
+        navigate("/login");
       }
     } catch (err) {
-      setError(err.message || "Invalid email or password");
+      setError(err.message || "Failed to create account. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -63,31 +86,35 @@ const LoginForm = () => {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900 mb-6">
-            Welcome Back to Your{" "}
-            <span className="text-[#0d2176]">Academic Journey</span>
+            Start Your{" "}
+            <span className="text-[#0d2176]">Academic Journey</span> Today
           </h1>
 
           <p className="text-lg text-slate-900/60 mb-8">
-            Please login to access your personalized dashboard, explore courses, track scholarship applications, and stay updated on exam schedules.
+            Create an account to access thousands of courses, scholarship opportunities, and exam resources. Join our community of students today!
           </p>
 
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-[#0d2176]"></div>
-              <p className="text-slate-900/70">Track your scholarship applications</p>
+              <p className="text-slate-900/70">Access to 1000+ courses</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-[#0d2176]"></div>
-              <p className="text-slate-900/70">Save your favorite courses</p>
+              <p className="text-slate-900/70">Personalized scholarship recommendations</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-[#0d2176]"></div>
-              <p className="text-slate-900/70">Get personalized recommendations</p>
+              <p className="text-slate-900/70">Real-time exam updates</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-[#0d2176]"></div>
+              <p className="text-slate-900/70">100% free to use</p>
             </div>
           </div>
         </div>
 
-        {/* -------- RIGHT SIDE - Login Form -------- */}
+        {/* -------- RIGHT SIDE - Sign Up Form -------- */}
         <div className="w-full">
           <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-8 md:p-10">
             
@@ -100,9 +127,9 @@ const LoginForm = () => {
             </div>
 
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-slate-900">Sign In</h2>
+              <h2 className="text-3xl font-bold text-slate-900">Create Account</h2>
               <p className="text-slate-900/60 mt-2">
-                Enter your credentials to access your account
+                Sign up to get started with StudentPortal
               </p>
               {error && (
                 <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
@@ -111,8 +138,30 @@ const LoginForm = () => {
               )}
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               
+              {/* Full Name Field */}
+              <div>
+                <label htmlFor="fullName" className="block text-sm font-semibold text-slate-900 mb-2">
+                  Full Name
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <User size={18} className="text-slate-400" />
+                  </div>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
+                    className="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0d2176] focus:border-transparent transition"
+                    placeholder="John Doe"
+                  />
+                </div>
+              </div>
+
               {/* Email Field */}
               <div>
                 <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
@@ -135,6 +184,27 @@ const LoginForm = () => {
                 </div>
               </div>
 
+              {/* Phone Field */}
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-slate-900 mb-2">
+                  Phone Number (Optional)
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <Phone size={18} className="text-slate-400" />
+                  </div>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0d2176] focus:border-transparent transition"
+                    placeholder="+1 (555) 123-4567"
+                  />
+                </div>
+              </div>
+
               {/* Password Field */}
               <div>
                 <label htmlFor="password" className="block text-sm font-semibold text-slate-900 mb-2">
@@ -152,7 +222,7 @@ const LoginForm = () => {
                     onChange={handleChange}
                     required
                     className="w-full pl-12 pr-12 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0d2176] focus:border-transparent transition"
-                    placeholder="Enter your password"
+                    placeholder="Create a strong password"
                   />
                   <button
                     type="button"
@@ -164,21 +234,56 @@ const LoginForm = () => {
                 </div>
               </div>
 
-              {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="rememberMe"
-                    checked={formData.rememberMe}
-                    onChange={handleChange}
-                    className="w-4 h-4 text-[#0d2176] border-slate-300 rounded focus:ring-[#0d2176]"
-                  />
-                  <span className="text-sm text-slate-900/70">Remember me</span>
+              {/* Confirm Password Field */}
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-semibold text-slate-900 mb-2">
+                  Confirm Password
                 </label>
-                <a href="#" className="text-sm text-[#0d2176] hover:underline font-semibold">
-                  Forgot Password?
-                </a>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <Lock size={18} className="text-slate-400" />
+                  </div>
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    required
+                    className="w-full pl-12 pr-12 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0d2176] focus:border-transparent transition"
+                    placeholder="Re-enter your password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600"
+                  >
+                    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Terms and Conditions */}
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  id="agreeToTerms"
+                  name="agreeToTerms"
+                  checked={formData.agreeToTerms}
+                  onChange={handleChange}
+                  required
+                  className="w-4 h-4 mt-1 text-[#0d2176] border-slate-300 rounded focus:ring-[#0d2176]"
+                />
+                <label htmlFor="agreeToTerms" className="text-sm text-slate-900/70">
+                  I agree to the{" "}
+                  <a href="#" className="text-[#0d2176] hover:underline font-semibold">
+                    Terms and Conditions
+                  </a>{" "}
+                  and{" "}
+                  <a href="#" className="text-[#0d2176] hover:underline font-semibold">
+                    Privacy Policy
+                  </a>
+                </label>
               </div>
 
               {/* Submit Button */}
@@ -187,7 +292,7 @@ const LoginForm = () => {
                 disabled={loading}
                 className="w-full bg-[#0d2176] text-white font-semibold py-3 px-6 rounded-lg hover:bg-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? "Signing In..." : "Sign In"}
+                {loading ? "Creating Account..." : "Create Account"}
               </button>
 
               {/* Divider */}
@@ -196,11 +301,11 @@ const LoginForm = () => {
                   <div className="w-full border-t border-slate-300"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white text-slate-500">Or continue with</span>
+                  <span className="px-4 bg-white text-slate-500">Or sign up with</span>
                 </div>
               </div>
 
-              {/* Social Login Buttons */}
+              {/* Social Sign Up Buttons */}
               <div className="grid grid-cols-2 gap-4">
                 <button
                   type="button"
@@ -226,11 +331,11 @@ const LoginForm = () => {
                 </button>
               </div>
 
-              {/* Sign Up Link */}
+              {/* Login Link */}
               <p className="text-center text-sm text-slate-900/60 mt-6">
-                Don't have an account?{" "}
-                <Link to="/signup" className="text-[#0d2176] hover:underline font-semibold">
-                  Sign Up
+                Already have an account?{" "}
+                <Link to="/login" className="text-[#0d2176] hover:underline font-semibold">
+                  Sign In
                 </Link>
               </p>
             </form>
@@ -242,4 +347,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
