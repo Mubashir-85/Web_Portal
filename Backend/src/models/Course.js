@@ -29,6 +29,17 @@ const courseSchema = new mongoose.Schema(
     platformUrl: {
       type: String,
     },
+    enrollmentDeadline: {
+      type: Date,
+    },
+    startDate: {
+      type: Date,
+    },
+    status: {
+      type: String,
+      enum: ['open', 'upcoming', 'ongoing', 'completed'],
+      default: 'open',
+    },
   },
   { timestamps: true },
 );

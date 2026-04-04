@@ -26,6 +26,17 @@ const examSchema = new mongoose.Schema(
     officialWebsite: {
       type: String,
     },
+    examDate: {
+      type: Date,
+    },
+    registrationDeadline: {
+      type: Date,
+    },
+    status: {
+      type: String,
+      enum: ['upcoming', 'ongoing', 'completed'],
+      default: 'upcoming',
+    },
   },
   { timestamps: true }
 );
